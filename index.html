@@ -1,113 +1,348 @@
 
-/* =========================================
-   MAHII'S BIRTHDAY WEBSITE 💗
-   SIX-MODULE NAVIGATION
-   ========================================= */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffe5ef">
+  <title>For Mahii 💗</title>
 
-const birthdayModules = {
-  1: "index.html",
-  2: "module2.html",
-  3: "module3.html",
-  4: "module4.html",
-  5: "module5.html",
-  6: "module6.html"
-};
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-// Open the next birthday module
-function goToModule(moduleNumber) {
-  const nextPage = birthdayModules[moduleNumber];
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      overflow-x: hidden;
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      background: linear-gradient(
+        135deg,
+        #fff0f5,
+        #ffe0eb,
+        #f9d7ff
+      );
+      color: #66364c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      position: relative;
+    }
 
-  if (nextPage) {
-    window.location.href = nextPage;
-  }
-}
+    .glow {
+      position: fixed;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: rgba(255, 153, 193, 0.25);
+      filter: blur(55px);
+      pointer-events: none;
+      animation: glowMove 6s ease-in-out infinite alternate;
+    }
 
-// Module 1: YES, SHOW ME
-function yesShowMe() {
-  goToModule(2);
-}
+    .glow.one {
+      top: 4%;
+      left: -90px;
+    }
 
-// Module 1: NOT YET
-function notYet() {
-  alert("Hehe 🤭 Your surprise will be waiting for you! 💗");
-}
+    .glow.two {
+      bottom: 3%;
+      right: -90px;
+      background: rgba(210, 155, 255, 0.28);
+    }
 
-// Module 2 → Module 3
-function continueFromBalloons() {
-  goToModule(3);
-}
+    .card {
+      width: 100%;
+      max-width: 440px;
+      padding: 36px 23px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: 0 20px 60px rgba(173, 87, 125, 0.17);
+      position: relative;
+      z-index: 2;
+      animation: cardEnter 1s ease both;
+      backdrop-filter: blur(12px);
+    }
 
-// Module 3 → Module 4
-function continueFromBirthdayWish() {
-  goToModule(4);
-}
+    .eyebrow {
+      display: inline-block;
+      background: #ffe2ed;
+      color: #b84e78;
+      border-radius: 30px;
+      padding: 9px 15px;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin-bottom: 22px;
+    }
 
-// Module 4 → Module 5
-function continueFromRoses() {
-  goToModule(5);
-}
+    .cake {
+      font-size: 75px;
+      line-height: 1.4;
+      display: block;
+      animation: cakeBounce 2s ease-in-out infinite;
+      filter: drop-shadow(0 8px 10px rgba(202, 104, 145, 0.18));
+    }
 
-// Module 5 → Module 6
-function continueFromMemories() {
-  goToModule(6);
-}
+    h1 {
+      font-size: clamp(31px, 8vw, 43px);
+      line-height: 1.2;
+      color: #c34f7d;
+      margin: 12px 0;
+    }
 
-// Module 6: FINISH THE WEBSITE
-function finishBirthdaySurprise() {
-  const message = document.getElementById("finalMessage");
+    .name {
+      color: #9146ad;
+      display: inline-block;
+      animation: namePulse 2s ease-in-out infinite;
+    }
 
-  if (message) {
-    message.style.display = "block";
-  }
-}
+    .subtitle {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #805b6c;
+      margin: 16px 0 23px;
+    }
 
-<script>
-const birthdayModules = {
-  2: "module2.html",
-  3: "module3.html",
-  4: "module4.html",
-  5: "module5.html",
-  6: "module6.html"
-};
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: #df87a8;
+      margin: 20px 0;
+    }
 
-function goToModule(number) {
-  window.location.href = birthdayModules[number];
-}
+    .divider span {
+      height: 1px;
+      width: 50px;
+      background: #f1bdd0;
+    }
 
-function yesShowMe() {
-  goToModule(2);
-}
+    .question {
+      font-size: 19px;
+      font-weight: bold;
+      line-height: 1.6;
+      margin-bottom: 22px;
+    }
 
-function notYet() {
-  alert("Hehe 🤭 Your surprise will be waiting for you! 💗");
-}
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
 
-function continueFromBalloons() {
-  goToModule(3);
-}
+    .btn {
+      border: none;
+      border-radius: 17px;
+      padding: 16px 18px;
+      width: 100%;
+      font-size: 16px;
+      font-weight: bold;
+      font-family: inherit;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      display: block;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-function continueFromBirthdayWish() {
-  goToModule(4);
-}
+    .btn:active {
+      transform: scale(0.97);
+    }
 
-function continueFromRoses() {
-  goToModule(5);
-}
+    .yes {
+      background: linear-gradient(110deg, #f17da7, #d66bc0);
+      color: white;
+      box-shadow: 0 8px 20px rgba(213, 99, 151, 0.27);
+      animation: buttonPulse 2.5s ease-in-out infinite;
+    }
 
-function continueFromMemories() {
-  goToModule(6);
-}
+    .yes:hover {
+      box-shadow: 0 10px 27px rgba(213, 99, 151, 0.4);
+    }
 
-function finishBirthdaySurprise() {
-  const message = document.getElementById("finalMessage");
-  if (message) message.style.display = "block";
-}
-</script>
-<button onclick="yesShowMe()">YES, SHOW ME ♡</button>
-<button onclick="notYet()">Not yet</button>
-<button onclick="continueFromBalloons()">Continue →</button>
-<button onclick="continueFromBirthdayWish()">Continue →</button>
-<button onclick="continueFromRoses()">Continue →</button>
-<button onclick="continueFromMemories()">Continue →</button>
+    .not-yet {
+      background: white;
+      color: #b95c83;
+      border: 1px solid #f4ccdc;
+    }
+
+    .footer {
+      font-size: 12px;
+      color: #b58a9d;
+      margin-top: 25px;
+      letter-spacing: 1px;
+    }
+
+    #response {
+      color: #b34e79;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-top: 16px;
+      min-height: 0;
+    }
+
+    .float {
+      position: fixed;
+      bottom: -50px;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0;
+      animation: floatUp linear infinite;
+    }
+
+    @keyframes cardEnter {
+      from {
+        opacity: 0;
+        transform: translateY(35px) scale(0.94);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes cakeBounce {
+      0%, 100% { transform: translateY(0) rotate(-3deg); }
+      50% { transform: translateY(-9px) rotate(3deg); }
+    }
+
+    @keyframes namePulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.045); }
+    }
+
+    @keyframes buttonPulse {
+      0%, 100% { box-shadow: 0 8px 20px rgba(213, 99, 151, 0.24); }
+      50% { box-shadow: 0 8px 28px rgba(213, 99, 151, 0.48); }
+    }
+
+    @keyframes glowMove {
+      from { transform: translate(0, 0); }
+      to { transform: translate(35px, -25px); }
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% { opacity: 0.8; }
+      85% { opacity: 0.7; }
+      100% {
+        transform: translateY(-115vh) rotate(35deg);
+        opacity: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="glow one"></div>
+  <div class="glow two"></div>
+
+  <main class="card">
+    <div class="eyebrow">A LITTLE SURPRISE FOR YOU ✨</div>
+
+    <span class="cake" aria-label="Birthday cake">🎂</span>
+
+    <h1>
+      Hey, <span class="name">Mahii</span>! 💗
+    </h1>
+
+    <p class="subtitle">
+      Someone has prepared a little something special
+      just for you. 🥹💕
+      <br>
+      Are you ready to open your birthday surprise?
+    </p>
+
+    <div class="divider">
+      <span></span> ♡ ✨ ♡ <span></span>
+    </div>
+
+    <p class="question">
+      Shall we begin our little journey? 🧸
+    </p>
+
+    <div class="buttons">
+      <a class="btn yes" href="module2.html">
+        YES, SHOW ME ♡
+      </a>
+
+      <button class="btn not-yet" id="notYetButton" type="button">
+        Not yet 🙈
+      </button>
+    </div>
+
+    <p id="response" aria-live="polite"></p>
+
+    <div class="footer">
+      MADE WITH LOTS OF LOVE FOR MAHII 💌
+    </div>
+  </main>
+
+  <script>
+    // NOT YET button
+    const notYetButton = document.getElementById("notYetButton");
+    const response = document.getElementById("response");
+
+    let messageIndex = 0;
+
+    const messages = [
+      "Hehe 🙈 Take your time, Mahii! Your surprise is waiting 💗",
+      "A little curious, aren't we? 🤭💕",
+      "Okayyy, but your surprise is getting shy! 🎁🥹",
+      "Whenever you're ready, press YES, SHOW ME! 🩷"
+    ];
+
+    notYetButton.addEventListener("click", function () {
+      response.textContent = messages[messageIndex];
+      messageIndex = (messageIndex + 1) % messages.length;
+    });
+
+    // Floating hearts and sparkles
+    const decorations = ["💗", "💕", "✨", "♡", "🌸", "💖"];
+
+    function createFloatingDecoration() {
+      const item = document.createElement("span");
+      item.className = "float";
+      item.textContent =
+        decorations[Math.floor(Math.random() * decorations.length)];
+
+      item.style.left = Math.random() * 100 + "vw";
+      item.style.fontSize = (14 + Math.random() * 18) + "px";
+      item.style.animationDuration = (7 + Math.random() * 7) + "s";
+
+      document.body.appendChild(item);
+
+      item.addEventListener("animationend", function () {
+        item.remove();
+      });
+    }
+
+    for (let i = 0; i < 12; i++) {
+      setTimeout(createFloatingDecoration, i * 350);
+    }
+
+    setInterval(createFloatingDecoration, 850);
+  </script>
+
 </body>
 </html>
