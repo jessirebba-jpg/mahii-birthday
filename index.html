@@ -1,46 +1,62 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday Mahii ❤️</title>
-  <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #ffe0ec, #e5d7ff);
-      font-family: Arial, sans-serif;
-      text-align: center;
-      color: #76264c;
-    }
-    main {
-      padding: 30px 20px;
-      max-width: 420px;
-    }
-    h1 { font-size: 2.4rem; }
-    p { font-size: 1.2rem; line-height: 1.7; }
-    button {
-      border: 0;
-      border-radius: 25px;
-      padding: 14px 28px;
-      background: #e75480;
-      color: white;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
-  <main>
-    <h1>Happy Birthday, Mahii! 🎂❤️</h1>
-    <p>A special birthday surprise for you. You deserve all the love and happiness in the world! 🌹</p>
-    <button onclick="alert('Your special surprise is coming soon! ❤️')">
-      Open Your Surprise 💌
-    </button>
-  </main>
-</body>
-</html>
+/* =========================================
+   MAHII'S BIRTHDAY WEBSITE 💗
+   SIX-MODULE NAVIGATION
+   ========================================= */
+
+const birthdayModules = {
+  1: "index.html",
+  2: "module2.html",
+  3: "module3.html",
+  4: "module4.html",
+  5: "module5.html",
+  6: "module6.html"
+};
+
+// Open the next birthday module
+function goToModule(moduleNumber) {
+  const nextPage = birthdayModules[moduleNumber];
+
+  if (nextPage) {
+    window.location.href = nextPage;
+  }
+}
+
+// Module 1: YES, SHOW ME
+function yesShowMe() {
+  goToModule(2);
+}
+
+// Module 1: NOT YET
+function notYet() {
+  alert("Hehe 🤭 Your surprise will be waiting for you! 💗");
+}
+
+// Module 2 → Module 3
+function continueFromBalloons() {
+  goToModule(3);
+}
+
+// Module 3 → Module 4
+function continueFromBirthdayWish() {
+  goToModule(4);
+}
+
+// Module 4 → Module 5
+function continueFromRoses() {
+  goToModule(5);
+}
+
+// Module 5 → Module 6
+function continueFromMemories() {
+  goToModule(6);
+}
+
+// Module 6: FINISH THE WEBSITE
+function finishBirthdaySurprise() {
+  const message = document.getElementById("finalMessage");
+
+  if (message) {
+    message.style.display = "block";
+  }
+}
