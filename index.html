@@ -60,3 +60,54 @@ function finishBirthdaySurprise() {
     message.style.display = "block";
   }
 }
+
+<script>
+const birthdayModules = {
+  2: "module2.html",
+  3: "module3.html",
+  4: "module4.html",
+  5: "module5.html",
+  6: "module6.html"
+};
+
+function goToModule(number) {
+  window.location.href = birthdayModules[number];
+}
+
+function yesShowMe() {
+  goToModule(2);
+}
+
+function notYet() {
+  alert("Hehe 🤭 Your surprise will be waiting for you! 💗");
+}
+
+function continueFromBalloons() {
+  goToModule(3);
+}
+
+function continueFromBirthdayWish() {
+  goToModule(4);
+}
+
+function continueFromRoses() {
+  goToModule(5);
+}
+
+function continueFromMemories() {
+  goToModule(6);
+}
+
+function finishBirthdaySurprise() {
+  const message = document.getElementById("finalMessage");
+  if (message) message.style.display = "block";
+}
+</script>
+<button onclick="yesShowMe()">YES, SHOW ME ♡</button>
+<button onclick="notYet()">Not yet</button>
+<button onclick="continueFromBalloons()">Continue →</button>
+<button onclick="continueFromBirthdayWish()">Continue →</button>
+<button onclick="continueFromRoses()">Continue →</button>
+<button onclick="continueFromMemories()">Continue →</button>
+</body>
+</html>
