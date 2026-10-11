@@ -342,7 +342,49 @@
     }
 
     setInterval(createFloatingDecoration, 850);
-  </script>
+document.addEventListener("DOMContentLoaded", function () {
+  const currentFile = window.location.pathname
+    .split("/")
+    .pop()
+    .toLowerCase();
 
+  const moduleFiles = [
+    "index.html",
+    "module2.html",
+    "module3.html",
+    "module4.html",
+    "module5.html",
+    "module6.html"
+  ];
+
+  const currentIndex = moduleFiles.indexOf(currentFile);
+  if (currentIndex === -1) return;
+
+  // Connect Continue / Next buttons to the next module.
+  document.querySelectorAll("button, a").forEach(function (element) {
+    const label = (
+      element.innerText ||
+      element.textContent ||
+      element.getAttribute("aria-label") ||
+      ""
+    ).trim().toLowerCase();
+
+    if (
+      label.includes("continue") ||
+      label === "next" ||
+      label.includes("yes show me")
+    ) {
+      element.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        const nextIndex = currentIndex + 1;
+        if (nextIndex < moduleFiles.length) {
+          window.location.href = moduleFiles[nextIndex];
+        }
+      });
+    }
+  });
+});
+</script>
 </body>
 </html>
